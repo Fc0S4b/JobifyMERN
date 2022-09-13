@@ -1,0 +1,21 @@
+{
+  "name": "jobifymern",
+  "version": "1.0.0",
+  "description": "Proyecto de práctica con ReactJS, MongoDB y NodeExpress del curso de John Smilga en [udemy](https://www.udemy.com/share/105HjC3@L5Jo9BMWLcxqB2n9_ChDHoXtj5Qe1LZHE-B91DHzFGSB5qNOAFIZ4HSv0yjzvDP3eQ==/).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fc0S4b/JobifyMERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fc0S4b/JobifyMERN/issues"
+  },
+  "homepage": "https://github.com/Fc0S4b/JobifyMERN#readme"
+}
