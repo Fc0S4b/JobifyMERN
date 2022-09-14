@@ -37,4 +37,9 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
+// no todos los métodos (findOneAndUpdate) activan este hook (o middleware de mongoose)
+UserSchema.pre('save', function () {
+  console.log(this.password);
+});
+
 export default mongoose.model('User', UserSchema);
