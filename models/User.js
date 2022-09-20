@@ -42,8 +42,9 @@ const UserSchema = new mongoose.Schema({
 
 // no todos los métodos (findOneAndUpdate) activan este hook (o middleware de mongoose)
 UserSchema.pre('save', async function () {
-  // const salt = await bcrypt.genSalt(10);
-  // this.password = await bcrypt.hash(this.password, salt);
+  if (!this.isModified('password')) return;
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 UserSchema.methods.createJWT = function () {
