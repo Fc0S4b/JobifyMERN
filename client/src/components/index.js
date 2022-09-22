@@ -4,4 +4,13 @@ import FormRow from './FormRow';
 import Logo from './Logo';
 import Navbar from './Navbar';
 import SmallSidebar from './SmallSidebar';
-export { Logo, FormRow, Alert, Navbar, BigSidebar, SmallSidebar };
+import FormRowSelect from './FormRowSelect.js';
+export {
+  Logo,
+  FormRow,
+  Alert,
+  Navbar,
+  BigSidebar,
+  SmallSidebar,
+  FormRowSelect,
+};
