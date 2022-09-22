@@ -42,12 +42,12 @@ const AppProvider = ({ children }) => {
 
   // axios
   const authFetch = axios.create({
-    baseURL: '/api/v1/',
+    baseURL: '/api/v1',
   });
   // request
   authFetch.interceptors.request.use(
     (config) => {
-      // config.headers.commom['Authorization'] = `Bearer ${state.token}`;
+      config.headers.common['Authorization'] = `Bearer ${state.token}`;
       return config;
     },
     (error) => {
