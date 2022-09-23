@@ -49,6 +49,10 @@ const initialState = {
   jobType: 'full-time',
   statusOptions: ['interview', 'declined', 'pending'],
   status: 'pending',
+  jobs: [],
+  totalJobs: 0,
+  numOfPages: 1,
+  page: 1,
 };
 
 const AppContext = React.createContext();
