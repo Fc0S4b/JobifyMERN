@@ -27,6 +27,8 @@ import {
   EDIT_JOB_SUCCESS,
   EDIT_JOB_BEGIN,
   EDIT_JOB_ERROR,
+  SHOW_STATS_SUCCESS,
+  SHOW_STATS_BEGIN,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -262,6 +264,21 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'danger',
       alertText: action.payload.msg,
+    };
+  }
+  if (action.type === SHOW_STATS_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+      showAlert: false,
+    };
+  }
+  if (action.type === SHOW_STATS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: true,
+      stats: action.payload.stats,
+      monthlyApplcations: action.payload.monthlyApplcations,
     };
   }
   throw new Error(`no such action : ${action.type}`);
