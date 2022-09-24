@@ -13,7 +13,16 @@ const createJob = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ job });
 };
 const deleteJob = async (req, res) => {
-  res.send('delete job');
+  const { id: jobId } = req.params;
+  const job = await Job.findOne({ _id: jobId });
+
+  if (!job) {
+    throw new NotFoundError(`No job with id: ${jobId}`);
+  }
+  checkPermissions(req.user, job.createdBy);
+  await job.remove();
+
+  res.status(StatusCodes.OK).json({ msg: 'Success! Job removed' });
 };
 
 const getAllJobs = async (req, res) => {
@@ -34,8 +43,6 @@ const updateJob = async (req, res) => {
     throw new NotFoundError(`No job with id: ${jobId}`);
   }
   // check permissions
-  console.log(typeof req.user.userId); //string
-  console.log(typeof job.createdBy); //object
 
   checkPermissions(req.user, job.createdBy);
 
