@@ -7,6 +7,7 @@ const Stats = () => {
 
   useEffect(() => {
     showStats();
+    // eslint-disable-next-line
   }, []);
 
   if (isLoading) {
@@ -15,7 +16,7 @@ const Stats = () => {
   return (
     <>
       <StatsContainer />
-      {monthlyApplications.length < 0 && <ChartsContainer />}
+      {monthlyApplications.length > 0 && <ChartsContainer />}
     </>
   );
 };

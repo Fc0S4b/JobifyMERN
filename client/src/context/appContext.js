@@ -330,6 +330,7 @@ const AppProvider = ({ children }) => {
       console.log(error.response);
       // logoutUser()
     }
+    clearAlert();
   };
 
   return (
