@@ -34,6 +34,7 @@ import {
   EDIT_JOB_ERROR,
   SHOW_STATS_SUCCESS,
   SHOW_STATS_BEGIN,
+  CLEAR_FILTERS,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -339,7 +340,7 @@ const AppProvider = ({ children }) => {
   };
 
   const clearFilters = () => {
-    console.log('clear filters');
+    dispatch({ type: CLEAR_FILTERS });
   };
 
   return (
