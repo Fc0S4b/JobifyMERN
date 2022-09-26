@@ -5419,6 +5419,7 @@ web: node server.js
 ```
 
 - rm -rf .git
+- para windows users rm -r -fo .git
 - git init
 - git add .
 - git commit -m "first commit"
