@@ -1505,6 +1505,7 @@ npm install validator
 - await User.create(req.body)
 - if success 201 with json({user}) (temp)
 - if error 500 with json({msg:'there was an error'})
+- no olvides usar app.use(express.json()) en server.js para obtener el body que envías en postman
 
 #### Pass Error to Error Handler
 
@@ -1524,6 +1525,7 @@ npm install express-async-errors
 - import 'express-async-errors'
 
 - use throw Error('error') instead of next(error)
+- impórtalo por encima de todas las importaciones, si no no tendrás respuesta en postman y se crasheará la app
 
 #### Http Status Codes
 
@@ -2154,7 +2156,7 @@ const SharedLayout = () => {
     <Wrapper>
       <nav>
         <Link to="all-jobs">all jobs</Link>
-        <Link to="add-job">all jobs</Link>
+        <Link to="add-job">add jobs</Link>
       </nav>
       <Outlet />
     </Wrapper>
