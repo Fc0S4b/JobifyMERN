@@ -25,6 +25,20 @@ const SearchContainer = () => {
     e.preventDefault();
     clearFilters();
   };
+  const debounce = () => {
+    // console.log('debounce');
+    let timeoutID;
+    return (e) => {
+      setLocalSearch(e.target.value);
+      clearTimeout(timeoutID);
+      // no uses value: localSearch, localSearch se actualiza cuando se ejecuta esta función, no tiene sentido definirla acá
+      timeoutID = setTimeout(() => {
+        handleChange({ name: e.target.name, value: e.target.value });
+      }, 1000);
+    };
+  };
+
+  const optimizeDebounce = useMemo(() => debounce(), []);
 
   return (
     <Wrapper>
@@ -36,7 +50,7 @@ const SearchContainer = () => {
             type="text"
             name="search"
             value={localSearch}
-            handleChange={(e) => setLocalSearch(e.target.value)}
+            handleChange={optimizeDebounce}
           />
           {/* search by status*/}
           <FormRowSelect
