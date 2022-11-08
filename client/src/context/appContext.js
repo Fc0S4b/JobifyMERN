@@ -36,6 +36,7 @@ import {
   SHOW_STATS_BEGIN,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  DELETE_JOB_ERROR,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -312,7 +313,7 @@ const AppProvider = ({ children }) => {
       if (error.response.status === 401) return;
       dispatch({
         type: EDIT_JOB_ERROR,
-        paylaod: { msg: error.response.data.msg },
+        payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
@@ -323,8 +324,13 @@ const AppProvider = ({ children }) => {
       await authFetch.delete(`/jobs/${jobId}`);
       getJobs();
     } catch (error) {
-      logoutUser();
+      if (error.response.status === 401) return;
+      dispatch({
+        type: DELETE_JOB_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
     }
+    clearAlert();
   };
 
   const showStats = async () => {
